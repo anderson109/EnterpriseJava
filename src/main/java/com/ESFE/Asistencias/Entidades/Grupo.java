@@ -14,4 +14,29 @@ public class Grupo {
     private String nombre;
     @Nullable
     private String descripcion;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public @NotBlank(message = "Ingrese el nombre del grupo") String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(@NotBlank(message = "Ingrese el nombre del grupo") String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Nullable
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(@Nullable String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
