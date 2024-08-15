@@ -89,3 +89,5 @@ public class GrupoController {
 
 
 }
+
+/*Grupo controller Entidad grupo Igrupo Repository GrupoServices IgrupoServices funcional*/
