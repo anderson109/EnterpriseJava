@@ -40,4 +40,7 @@ public class GrupoServices implements IGrupoServices {
     public void EliminarPorId(Integer id) {
         grupoRepository.deleteById(id);
     }
+
 }
+
+

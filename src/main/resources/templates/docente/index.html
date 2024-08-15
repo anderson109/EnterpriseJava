@@ -1,0 +1,36 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div layout:fragment="content">
+    <h1>Listado de docentes</h1>
+    <a th:href="@{Docentes/create}" class="btn btn-outline-primary">Nuevo docente</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Escuela</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${Docentes}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.nombre}"></td>
+            <td th:text="${item.apellido}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.telefono}"></td>
+            <td th:text="${item.escuela}"></td>
+            <td>
+                <a th:href="@{/Docentes/details/{id} (id = ${item.id}) }" class="btn btn-secondary">Ver</a>
+                <a th:href="@{/Docentes/edit/{id} (id = ${item.id}) }" class="btn btn-info">Editar</a>
+                <a th:href="@{/Docentes/remove/{id} (id = ${item.id}) }" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

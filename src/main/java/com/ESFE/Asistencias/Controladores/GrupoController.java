@@ -8,9 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +30,7 @@ public class GrupoController {
         Pageable pageable = PageRequest.of(currentPage,pageSize);
 
         Page<Grupo> grupos = grupoServices.BuscarTodosPaginados(pageable);
-        model.addAttribute("grupos", grupos);
+        model.addAttribute("Grupos", grupos);
 
         int totalPage = grupos.getTotalPages();
         if (totalPage > 0){
@@ -41,5 +41,51 @@ public class GrupoController {
         }
 
         return "grupo/index";
+
     }
+    @GetMapping("/create")
+    public String create(Grupo grupo){
+    return "grupo/create";
+    }
+
+    @PostMapping("/save")
+    public String save(Grupo grupo, BindingResult result, Model model, RedirectAttributes attributes){
+    if(result.hasErrors()){
+        model.addAttribute(grupo);
+        attributes.addFlashAttribute("msg","No se pudo guardar debido a un Error.");
+        return "grupo/create";
+    }
+    grupoServices.CrearOeditar(grupo);
+    attributes.addFlashAttribute("msg","Grupo creado correctamente");
+    return "redirect:/Grupos";
+    }
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable("id") Integer id, Model model){
+    Grupo grupo = grupoServices.BuscarPorId(id).get();
+    model.addAttribute("grupo", grupo);
+    return "grupo/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model){
+    Grupo grupo = grupoServices.BuscarPorId(id).get();
+    model.addAttribute("grupo", grupo);
+    return "grupo/edit";
+    }
+
+   @GetMapping("/remove/{id}")
+   public  String remove(@PathVariable("id") Integer id, Model model){
+    Grupo grupo = grupoServices.BuscarPorId(id).get();
+    model.addAttribute("grupo", grupo);
+    return "grupo/delete";
+   }
+
+    @PostMapping("/delete")
+    public String delete(Grupo grupo, RedirectAttributes attributes) {
+        grupoServices.EliminarPorId(grupo.getId());
+        attributes.addFlashAttribute("msg", "Grupo eliminado correctamente");
+        return "redirect:/Grupos";
+    }
+
+
 }
