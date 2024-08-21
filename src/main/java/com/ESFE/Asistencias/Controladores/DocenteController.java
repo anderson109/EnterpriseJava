@@ -1,9 +1,7 @@
 package com.ESFE.Asistencias.Controladores;
 
 import com.ESFE.Asistencias.Entidades.Docente;
-import com.ESFE.Asistencias.Entidades.Grupo;
 import com.ESFE.Asistencias.Servicios.Implementaciones.DocenteServices;
-import com.ESFE.Asistencias.Servicios.Interfaces.IDocenteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

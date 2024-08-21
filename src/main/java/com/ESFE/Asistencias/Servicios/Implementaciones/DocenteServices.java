@@ -19,6 +19,8 @@ public class DocenteServices implements IDocenteServices {
     private IDocenteRepository docenteRepository;
 
 
+
+
     @Override
     public Page<Docente> BuscarTodosPaginados(Pageable pageable) {
         return docenteRepository.findAll(pageable);
