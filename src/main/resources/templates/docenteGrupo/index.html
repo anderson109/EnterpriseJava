@@ -37,9 +37,11 @@
             <td th:text="${item.grupo.nombre}"></td>
             <td th:text="${item.anio}"></td>
             <td th:text="${item.ciclo}"></td>
-            <td>
-            <a th:href="@{/docenteGrupos/details/{id} (id=${item.id})}" class="btn btn-outline-secondary">Ver</a>                <a th:href="@{/docenteGrupos/edit/{id} (id=${item.id})}" class="btn btn-outline-info">Editar</a>
-            <a th:href="@{/docenteGrupos/remove/{id} (id=${item.id})}" class="btn btn-outline-danger">Eliminar</a>            </td>
+             <td>
+                <a th:href="@{/docenteGrupos/details/{id} (id=${item.id})}" class="btn btn-outline-secondary">Ver</a>
+                <a th:href="@{/docenteGrupos/edit/{id} (id=${item.id})}" class="btn btn-outline-info">Editar</a>
+                <a th:href="@{/docenteGrupos/remove/{id} (id=${item.id})}" class="btn btn-outline-danger">Eliminar</a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -50,4 +52,5 @@
            </li>
        </ul>
    </nav>
-</div></html>
+</div>
+</html>

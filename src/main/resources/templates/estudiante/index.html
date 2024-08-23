@@ -1,0 +1,30 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div layout:fragment="content">
+    <h1>Listado de Estudiantes</h1>
+    <a th:href="@{Estudiantes/create}" class="btn btn-outline-primary">Nuevo Estudiante</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${Estudiantes}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.nombre}"></td>
+            <td th:text="${item.email}"></td>
+            <td>
+                <a th:href="@{/Estudiantes/details/{id} (id = ${item.id}) }" class="btn btn-secondary">Ver</a>
+                <a th:href="@{/Estudiantes/edit/{id} (id = ${item.id}) }" class="btn btn-info">Editar</a>
+                <a th:href="@{/Estudiantes/remove/{id} (id = ${item.id}) }" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

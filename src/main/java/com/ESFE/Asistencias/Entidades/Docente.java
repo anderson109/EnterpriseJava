@@ -1,6 +1,5 @@
 package com.ESFE.Asistencias.Entidades;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

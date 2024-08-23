@@ -3,8 +3,8 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en"  xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
             <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">ESFE AGAPE</span>
         </a>
 
         <!-- Sidebar -->
@@ -174,7 +174,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <div class="info nav-item">
+                        <a href="#" class="nav-link active">
+                            <div sec:authorize="isAuthenticated()" class="small">
+                                <span class="text-light d-block" sec:authentication="name" style="text-transform: uppercase;"></span>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="#" class="d-block">Francisco Anderson</a>
                 </div>
             </div>
 
@@ -199,7 +206,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Starter Pages
+                                Asignaciones Esfe
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -210,21 +217,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <p>Active Page</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inactive Page</p>
-                                </a>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <a th:href="@{/Docentes}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Docentes </p>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Simple Link
-                                <span class="right badge badge-danger">New</span>
-                            </p>
+                        <a th:href="@{/Grupos}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Grupos</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/docenteGrupos}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Grupos de docentes </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/Estudiantes}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Estudiantes </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/estudianteGrupos}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Grupo de estudiantes</p>
+                        </a>
+                    </li>
+                </ul>
+                    <li class="nav-item">
+                        <a th:href="@{/logout}" class="nav-link active" style="background-color: red; color: white;">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>Cerrar Sesion</p>
                         </a>
                     </li>
                 </ul>
